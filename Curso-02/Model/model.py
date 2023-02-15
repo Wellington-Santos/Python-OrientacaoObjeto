@@ -1,35 +1,62 @@
-class Filme:
-    def __init__(self, nome, ano, duracao):
-        self.__nome = nome.title()
-        self.__ano = ano
-        self.__duracao = duracao
-        self.__likes = 0
+# Definição da Classe Pai, que terá atributos e métodos herdados pelas classes filhas 
+
+class Programa:
+    def __init__(self, nome, ano):
+        self._nome = nome.title()
+        self.ano = ano
+        self._likes = 0
 
     def dar_like(self):
-        self.__likes += 1
+        self._likes += 1
 
     @property
     def nome(self):
-        return self.__nome
+        return self._nome
+
+    @property
+    def likes(self):
+        return self._likes
 
     @nome.setter
     def nome(self, nome):
-        self.__nome = nome
+        self._nome = nome
 
-    
+    # Método para realizar uma interpretação textual do objeto, independente dos atributos que haverá nas classes filhas
+    def __str__(self):
+        return f"{self._nome} - {self.ano} - {self._likes} Likes"
 
-class Serie:
+
+# Definição das classes filhas e seus atributos particulares
+class Filme(Programa):
+    def __init__(self, nome, ano, duracao):
+        super().__init__(nome, ano)
+        self.duracao = duracao
+
+    # Observe que neste método, estou realizando uma sobrecarga do método que está na classe pai, com os atributos específicos dessa classe
+    def __str__(self):
+        return f"{self.nome} - {self.ano} - {self.duracao} min - {self.likes} Likes"
+
+
+class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
-        self.__nome = nome.title()
-        self.__ano = ano
-        self.__temporadas = temporadas
-        self.__likes = 0
+        super().__init__(nome, ano)
+        self.temporadas = temporadas
 
-    def dar_like(self):
-        self.__likes += 1
+    def __str__(self):
+        return f"{self.nome} - {self.ano} - {self.temporadas} temporadas - {self.likes} Likes"
+
 
 filme = Filme("top gun: Maverick", 2022, 160)
 serie = Serie("gothan", 2017, 8)
 
-print(f"Filme: {filme.__nome} - Ano: {filme.__ano} - Duração: {filme.__duracao} - Likes {filme.__likes}")
-print(f"Serie: {serie.__nome} - Ano: {serie.__ano} - Temporada: {serie.__temporadas} - Likes {serie.__likes}")
+filme.dar_like()
+filme.dar_like()
+
+serie.dar_like()
+
+playlist = [filme, serie]
+
+for programa in playlist:
+
+    # A partir do momento que já tenho um método para realizar interpretação textual da classe declarado no objeto, eu posso simplesmente dar um print nele, que ele irá trazer as informações do objeto
+    print(programa)
