@@ -1,7 +1,15 @@
 # Autor: Wellington Santos - 24/02/2023 00:41
 # Começando a trabalhar com extrações de informações de strings e URLs
 
-url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
+# url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
+url = " "
+
+# Limpeza da URL
+url = url.strip()
+
+# Validação da URL
+if url == "":
+    raise ValueError("A URL está vazia")
 
 # Separa a URL base e os parametros
 indice_interrogacao = url.find('?')
