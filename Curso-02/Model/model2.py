@@ -1,3 +1,5 @@
+#Este arquivo contém o conteudo referente e dependencias de classes entre as classes Funcionario, Caleum e Alura
+
 class Funcionario:
     def __init__(self, nome):
         self.nome = nome
@@ -25,7 +27,8 @@ class Alura(Funcionario):
 class Hipster:
     def __str__(self):
         return f'Hipster, {self.nome}'
-
+    
+# Daqui em diante seria a utilização das classes criadas acimas e como usar os metodos delas
 class Junior(Alura):
     pass
 
@@ -43,3 +46,5 @@ class Senior(Alura, Caelum, Hipster):
 
 teste = Senior('Wellington')
 print(teste)
+
+# Obs.: Podemos utilizar essas classes para criarmos uma API de exemplo que traga algumas informações de usuarios por exemplo

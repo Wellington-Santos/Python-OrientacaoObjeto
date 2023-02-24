@@ -42,6 +42,7 @@ class Serie(Programa):
     def __str__(self):
         return f"{self.nome} - {self.ano} - {self.temporadas} temporadas - {self.likes} Likes"
 
+# Definição da classes que terá como atributo uma lista e nela também temos a maneira correta de definir o tipo dessa lista
 class Playlist:
     def __init__(self, nome, programas):
         self.nome = nome
@@ -84,13 +85,16 @@ serie2.dar_like()
 serie2.dar_like()
 
 
-
+# Criando uma lista de filmes do tipo Dict
 playlist = [filme, serie, filme2, serie2]
 
+# Adicionando a lista de filmes criadas em um objeto e fazendo com que a lista seja um atributo
 programacao = Playlist("Programação Fim de Semana", playlist)
  
+
 print(f"Tamanho da playlist: {len(playlist)}")
 
+# Acessando os itens da lista de filmes que estão dentro do objeto programação
 for programa in programacao:
     # A partir do momento que já tenho um método para realizar interpretação textual da classe declarado no objeto, eu posso simplesmente dar um print nele, que ele irá trazer as informações do objeto
     print(programa)
