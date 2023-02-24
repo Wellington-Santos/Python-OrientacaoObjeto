@@ -5,6 +5,16 @@ class ExtratorURL:
         self.url = self.limpa_url(url)
         self.valida_url()
 
+# Métodos especiais do Python para permitir que ser possivel realizar print, len e comparação do conteudo da classe
+    def __len__(self):
+        return len(self.url)
+    
+    def __str__(self):
+        return self.url
+    
+    def __eq__(self, other):
+        return self.url == other.url
+
     def limpa_url(self, url):
         if type(url) == str:
             return url.strip()
@@ -23,7 +33,7 @@ class ExtratorURL:
         if not match:
             raise ValueError("A URL não é válida")
 
-        print("A URL é válida")
+        # print("A URL é válida")
 
     def get_url_base(self):
         indice_interrogacao = self.url.find('?')
@@ -48,7 +58,16 @@ class ExtratorURL:
 
 
 # extrator_url = ExtratorURL(None)
+url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
 
-extrator_url = ExtratorURL("https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100")
-valor_quantidade = extrator_url.get_valor_parametro("quantidade")
-print(valor_quantidade)
+extrator_url = ExtratorURL(url)
+
+extrator_url2 = ExtratorURL(url)
+
+print("O tamanho da URL: ", len(extrator_url))
+print(extrator_url)
+
+print(extrator_url == extrator_url2)
+
+# valor_quantidade = extrator_url.get_valor_parametro("quantidade")
+# print(valor_quantidade)
