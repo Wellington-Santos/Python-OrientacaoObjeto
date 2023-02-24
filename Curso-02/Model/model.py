@@ -59,6 +59,10 @@ class Playlist:
     def tamanho(self):
         return len(self._programas)
     
+    @property
+    def __len__(self):
+        return len(self._programas)
+    
 
 filme = Filme("top gun: Maverick", 2022, 160)
 filme2 = Filme("todo mundo em pânico", 1998, 100)
@@ -74,6 +78,7 @@ filme2.dar_like()
 
 serie.dar_like()
 
+
 serie2.dar_like()
 serie2.dar_like()
 serie2.dar_like()
@@ -83,8 +88,8 @@ serie2.dar_like()
 playlist = [filme, serie, filme2, serie2]
 
 programacao = Playlist("Programação Fim de Semana", playlist)
-
-print(f"Tamanho da playlist {len(playlist)}")
+ 
+print(f"Tamanho da playlist: {len(playlist)}")
 
 for programa in programacao:
     # A partir do momento que já tenho um método para realizar interpretação textual da classe declarado no objeto, eu posso simplesmente dar um print nele, que ele irá trazer as informações do objeto
